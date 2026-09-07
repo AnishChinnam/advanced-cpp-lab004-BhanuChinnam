@@ -19,23 +19,34 @@ void Faculty::setDepartment(const std::string& department) {
     department_ = department;
 }
 
-// TODO: Implement getRank and setRank methods.
-const std::string& Faculty::getRank() const noexcept { }
-void Faculty::setRank(const std::string& rank) { }
-
-//TODO: Implement getOffice and setOffice methods.
-const std::string& Faculty::getOffice() const noexcept {}
-void Faculty::setOffice(const std::string& office) { }
-
-
-//TODO: Implement getRole method to return "Faculty".
-std::string Faculty::getRole() const {
-
+const std::string& Faculty::getRank() const noexcept {
+    return rank_;
 }
 
-//TODO: Implement getDescription method to return a string describing the faculty member.
+void Faculty::setRank(const std::string& rank) {
+    if (rank.empty()) {
+        throw std::invalid_argument("rank cannot be empty");
+    }
+    rank_ = rank;
+}
+
+const std::string& Faculty::getOffice() const noexcept {
+    return office_;
+}
+
+void Faculty::setOffice(const std::string& office) {
+    if (office.empty()) {
+        throw std::invalid_argument("office cannot be empty");
+    }
+    office_ = office;
+}
+
+std::string Faculty::getRole() const {
+    return "Faculty";
+}
+
 std::string Faculty::getDescription() const {
-    
+    return rank_ + " in the " + department_ + " department, office " + office_;
 }
 
 double Faculty::calculateWorkload() const {
